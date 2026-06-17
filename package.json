@@ -44,6 +44,10 @@
     },
     "./package.json": "./package.json"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "generate": "node scripts/generate.mjs",
     "prebuild": "npm run generate",
