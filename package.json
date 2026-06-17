@@ -1,0 +1,68 @@
+{
+  "name": "flaglet",
+  "version": "0.1.0",
+  "description": "Tree-shakeable React country flag components (SVG), generated from flagpack.",
+  "keywords": [
+    "react",
+    "flags",
+    "country-flags",
+    "svg",
+    "flag-icons",
+    "iso-3166",
+    "flagpack",
+    "components"
+  ],
+  "license": "MIT",
+  "author": "ssunils",
+  "homepage": "https://ssunils.github.io/flaglet/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssunils/flaglet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ssunils/flaglet/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "THIRD_PARTY_LICENSES"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./flags": {
+      "types": "./dist/flags/index.d.ts",
+      "import": "./dist/flags/index.js",
+      "require": "./dist/flags/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "prebuild": "npm run generate",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist src/flags src/registry.ts src/types.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@types/react": "^18.3.0",
+    "flagpack-core": "^2.1.0",
+    "react": "^18.3.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  }
+}
