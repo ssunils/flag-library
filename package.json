@@ -1,6 +1,6 @@
 {
-  "name": "flaglet",
-  "version": "0.1.0",
+  "name": "react-flaglet",
+  "version": "0.1.1",
   "description": "Tree-shakeable React country flag components (SVG), generated from flagpack.",
   "keywords": [
     "react",
@@ -14,13 +14,13 @@
   ],
   "license": "MIT",
   "author": "ssunils",
-  "homepage": "https://ssunils.github.io/flaglet/",
+  "homepage": "https://ssunils.github.io/flag-library/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ssunils/flaglet.git"
+    "url": "git+https://github.com/ssunils/flag-library.git"
   },
   "bugs": {
-    "url": "https://github.com/ssunils/flaglet/issues"
+    "url": "https://github.com/ssunils/flag-library/issues"
   },
   "type": "module",
   "sideEffects": false,

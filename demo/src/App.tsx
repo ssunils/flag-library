@@ -4,8 +4,8 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
-import { Flag, countryCodes, countryNames, resolveCode } from "flaglet";
-import { FlagUS, FlagJP, FlagBR } from "flaglet/flags";
+import { Flag, countryCodes, countryNames, resolveCode } from "react-flaglet";
+import { FlagUS, FlagJP, FlagBR } from "react-flaglet/flags";
 
 /* -------------------------------------------------------------------------- */
 /* Design tokens                                                              */
@@ -331,7 +331,7 @@ export function App() {
             }}
           >
             <span style={{ color: theme.inkFaint }}>$</span>
-            <span style={{ color: theme.ink }}>npm install flaglet</span>
+            <span style={{ color: theme.ink }}>npm install react-flaglet</span>
           </div>
         </header>
 
@@ -348,7 +348,7 @@ export function App() {
             </>
           }
         >
-          <Code>{`import { Flag } from "flaglet";
+          <Code>{`import { Flag } from "react-flaglet";
 
 <Flag code="US" />
 <Flag code="GB" size="l" rounded />
@@ -489,7 +489,7 @@ export function App() {
           title="Static imports"
           description="Best when the set of flags is known at build time. Only the flags you import ship in your bundle, and each component accepts standard SVG props."
         >
-          <Code>{`import { FlagUS, FlagJP, FlagBR } from "flaglet/flags";
+          <Code>{`import { FlagUS, FlagJP, FlagBR } from "react-flaglet/flags";
 
 <FlagUS width={48} />`}</Code>
           <div
@@ -518,7 +518,7 @@ export function App() {
           title="Utility functions"
           description="Helper utilities for working with country codes and names."
         >
-          <Code>{`import { countryCodes, countryNames, resolveCode } from "flaglet";
+          <Code>{`import { countryCodes, countryNames, resolveCode } from "react-flaglet";
 
 countryCodes        // ["AD", "AE", ...] every alpha-2 code
 countryNames.US     // "${countryNames.US}"

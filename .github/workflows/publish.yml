@@ -1,7 +1,9 @@
 name: Publish to npm
 
-# Publishes the root `flaglet` package. Cut a GitHub Release (or run this
-# workflow manually) and the tagged commit is built and published to npm.
+# Publishes the root `react-flaglet` package via npm Trusted Publishing (OIDC).
+# No NPM_TOKEN: npm exchanges GitHub's OIDC token for short-lived publish
+# credentials, so there is no secret to rotate. Requires a Trusted Publisher
+# configured on npm for this repo + workflow, and npm CLI >= 11.5.1.
 on:
   release:
     types: [published]
@@ -9,7 +11,7 @@ on:
 
 permissions:
   contents: read
-  id-token: write # required for npm provenance
+  id-token: write # required for OIDC trusted publishing + provenance
 
 jobs:
   publish:
@@ -26,14 +28,17 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
 
+      # Node 20 ships npm 10; trusted publishing needs >= 11.5.1.
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
       - name: Install dependencies
         run: npm ci
 
       - name: Build
         run: npm run build
 
+      # No NODE_AUTH_TOKEN here on purpose: npm authenticates via OIDC.
       # access + provenance come from package.json "publishConfig".
       - name: Publish
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

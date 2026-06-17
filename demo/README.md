@@ -1,8 +1,8 @@
-# flaglet demo
+# react-flaglet demo
 
-A live example and API reference for [flaglet](../README.md). It comes in two forms:
+A live example and API reference for [react-flaglet](../README.md). It comes in two forms:
 
-Live: **https://ssunils.github.io/flaglet/**
+Live: **https://ssunils.github.io/flag-library/**
 
 | File              | Build step | Use it for                                            |
 | ----------------- | ---------- | ----------------------------------------------------- |
@@ -11,7 +11,7 @@ Live: **https://ssunils.github.io/flaglet/**
 
 ## Run the Vite app locally
 
-The app consumes flaglet through a `file:..` link, so build the library first.
+The app consumes react-flaglet through a `file:..` link, so build the library first.
 
 ```sh
 # from the repo root
@@ -30,24 +30,24 @@ demo picks it up.
 
 The repo includes [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml),
 which on every push to `main` builds the library, builds this demo, and
-publishes it to GitHub Pages at `https://<user>.github.io/flaglet/`.
+publishes it to GitHub Pages at `https://<user>.github.io/flag-library/`.
 
 One-time setup: in the GitHub repo, go to **Settings > Pages** and set
 **Source** to **GitHub Actions**. After the next push to `main`, the site is
 live.
 
-The Vite `base` is set to `/flaglet/` for production builds (see
-[`vite.config.ts`](./vite.config.ts)). If you name the repo something other
-than `flaglet`, update that `base` and the `homepage` field in the root
-`package.json` to match, or asset URLs will 404.
+The Vite `base` is set to `/flag-library/` for production builds (see
+[`vite.config.ts`](./vite.config.ts)) to match the repo name. If you rename the
+repo, update that `base` and the `homepage` field in the root `package.json` to
+match, or asset URLs will 404.
 
 ## Deploy the standalone example as a Gist
 
-`standalone.html` has no build step. It loads React and flaglet from the
+`standalone.html` has no build step. It loads React and react-flaglet from the
 [esm.sh](https://esm.sh) CDN, so it runs anywhere a browser can fetch modules.
 
-This requires flaglet to be published to npm. For a stable example, pin a
-version in the import map (e.g. `flaglet@0.1.0` instead of `flaglet`).
+This requires react-flaglet to be published to npm. For a stable example, pin a
+version in the import map (e.g. `react-flaglet@0.1.0` instead of `react-flaglet`).
 
 1. Create a Gist at https://gist.github.com containing the contents of
    `standalone.html`. Name the file `index.html`.
@@ -64,9 +64,9 @@ by importing the Gist, which gives an editable playground.
 ## How the standalone file works
 
 - An [import map](https://developer.mozilla.org/docs/Web/HTML/Element/script/type/importmap)
-  maps the bare specifiers `react`, `react-dom/client`, `flaglet`, and
-  `flaglet/flags` to esm.sh URLs.
-- `?external=react` on the flaglet URLs tells esm.sh to import React from the
+  maps the bare specifiers `react`, `react-dom/client`, `react-flaglet`, and
+  `react-flaglet/flags` to esm.sh URLs.
+- `?external=react` on the react-flaglet URLs tells esm.sh to import React from the
   import map rather than bundling its own copy, guaranteeing a single React
   instance (otherwise hooks throw).
 - Babel Standalone compiles the inline JSX in the browser. This is convenient

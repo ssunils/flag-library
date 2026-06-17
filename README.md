@@ -1,9 +1,9 @@
-# flaglet
+# react-flaglet
 
 Tree-shakeable React country flag components. Crisp SVG flags for all ISO 3166-1 countries, loaded only when you use them.
 
 - Dynamic `<Flag code="US" />` that lazy-loads each flag's SVG on demand.
-- Static, tree-shakeable per-flag components (`import { FlagUS } from "flaglet/flags"`).
+- Static, tree-shakeable per-flag components (`import { FlagUS } from "react-flaglet/flags"`).
 - Full TypeScript autocomplete for every valid country code.
 - Accepts alpha-2, alpha-3, and numeric ISO codes.
 - Accessibility baked in (`role="img"` + country-name label).
@@ -11,7 +11,7 @@ Tree-shakeable React country flag components. Crisp SVG flags for all ISO 3166-1
 
 ## Live example
 
-**Live demo and API reference: https://ssunils.github.io/flaglet/**
+**Live demo and API reference: https://ssunils.github.io/flag-library/**
 
 The source lives in [`demo/`](./demo). It can be run locally with Vite, is
 deployed to GitHub Pages on every push to `main`, and can also be shared as a
@@ -22,7 +22,7 @@ single-file example from a GitHub Gist (no build step) via
 ## Install
 
 ```sh
-npm install flaglet
+npm install react-flaglet
 ```
 
 `react >= 16.8` is a peer dependency.
@@ -31,8 +31,8 @@ npm install flaglet
 
 | Import                | Provides                                                       |
 | --------------------- | -------------------------------------------------------------- |
-| `flaglet`             | `Flag`, `countryCodes`, `countryNames`, `resolveCode`, types   |
-| `flaglet/flags`       | One component per country: `FlagAD`, `FlagAE`, ... `FlagZW`     |
+| `react-flaglet`             | `Flag`, `countryCodes`, `countryNames`, `resolveCode`, types   |
+| `react-flaglet/flags`       | One component per country: `FlagAD`, `FlagAE`, ... `FlagZW`     |
 
 ## Usage
 
@@ -43,7 +43,7 @@ does **not** pull every flag into your bundle; each SVG is a separate chunk
 loaded on demand.
 
 ```tsx
-import { Flag } from "flaglet";
+import { Flag } from "react-flaglet";
 
 <Flag code="US" />
 <Flag code="GB" size="l" rounded />
@@ -58,7 +58,7 @@ Best when the set of flags is known at build time. Only the flags you import
 ship in your bundle.
 
 ```tsx
-import { FlagUS, FlagGB } from "flaglet/flags";
+import { FlagUS, FlagGB } from "react-flaglet/flags";
 
 <FlagUS width={32} />
 <FlagGB />
@@ -85,7 +85,7 @@ country name as the label.
 ## Utilities
 
 ```ts
-import { countryCodes, countryNames, resolveCode } from "flaglet";
+import { countryCodes, countryNames, resolveCode } from "react-flaglet";
 
 countryCodes;            // ["AD", "AE", ...] all known alpha-2 codes
 countryNames.US;         // "United States of America"
@@ -95,19 +95,19 @@ resolveCode("nope");     // undefined
 
 ## TypeScript
 
-flaglet ships its own types. The `code` prop accepts a `FlagInput`, which gives
+react-flaglet ships its own types. The `code` prop accepts a `FlagInput`, which gives
 autocomplete for every known code while still tolerating an arbitrary `string`
 at runtime (handy for codes coming from an API).
 
 ```ts
-import type { CountryCode, Alpha3Code, FlagInput, FlagComponent } from "flaglet";
+import type { CountryCode, Alpha3Code, FlagInput, FlagComponent } from "react-flaglet";
 
 const code: CountryCode = "US"; // autocompleted union of all alpha-2 codes
 ```
 
 ## Server-side rendering
 
-The static components (`flaglet/flags`) render synchronously and work in any
+The static components (`react-flaglet/flags`) render synchronously and work in any
 SSR or React Server Components setup. The dynamic `<Flag>` uses `React.lazy` +
 `Suspense`, so wrap it in a `<Suspense>` boundary (or rely on the built-in one)
 and provide a `fallback` if you need a placeholder during hydration. When the
@@ -123,7 +123,7 @@ hide it from assistive technology.
 
 Flag SVGs are generated from [flagpack](https://github.com/Yummygum/flagpack-core)
 (MIT). Country codes and names mirror that dataset. Flags can be politically
-sensitive; flaglet does not take a position on contested territories and simply
+sensitive; react-flaglet does not take a position on contested territories and simply
 reflects the upstream dataset. Corrections to flag artwork or codes are best
 filed upstream with flagpack.
 
