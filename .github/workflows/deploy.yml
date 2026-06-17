@@ -33,6 +33,10 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
+        with:
+          # Enable Pages via the API on first run instead of requiring a
+          # manual Settings > Pages > "GitHub Actions" toggle beforehand.
+          enablement: true
 
       - name: Build library
         run: |
